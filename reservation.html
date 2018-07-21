@@ -35,23 +35,44 @@
                             </div>
                             <div class="form-group">
                             <label for="inputFName">First Name</label>
-                            <input type="name" class="form-control" id="exampleInputFName" aria-describedby="emailHelp">
+                            <input type="name" class="form-control first-name" id="exampleInputFName" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
                             <label for="inputLName">Last Name</label>
-                            <input type="name" class="form-control" id="exampleInputLName" aria-describedby="emailHelp">
+                            <input type="name" class="form-control last-name" id="exampleInputLName" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="inputPhonenumber">Phone Number</label>
-                            <input type="password" class="form-control" id="exampleInputPhonenumber">
+                            <label for="inputPhonenumber ">Phone Number</label>
+                            <input type="number" class="form-control phone-number" id="exampleInputPhonenumber">
                         </div>
                         <div class="form-group">
                             <label for="inputEmail">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+                            <input type="email" class="form-control email" id="exampleInputEmail" aria-describedby="emailHelp">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg" id = "formbtn">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-lg resSubmit" id = "formbtn">Submit</button>
                         </div>
                     </form>
+                <script>
+                   
+                    
+                    $(".resSubmit").on("click", function (){
+                        event.preventDefault();
+                        var newReservation = {
+                            first_name: $(".first-name").val().trim(),
+                            last_name:  $(".last-name").val().trim(), 
+                            phone:  $(".phone-number").val().trim(), 
+                            email:  $(".email").val().trim(), 
+                        };
+                        $.post("/api/reservations",newReservation)
+                        .then(function (data){
+                            console.log("i'm working?")
+                        })
+                        console.log(newReservation);
+                       
+                    })
+
+
+                </script>
        
 
               <div class = "row">
