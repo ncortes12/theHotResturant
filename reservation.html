@@ -69,7 +69,7 @@
                         $(".email").val("");
 
 
-                        $.post("/api/reservations/",reservations)
+                        $.post("/api/reservation",reservations)
                         .then(function (data){
                             console.log("i'm working?")
                         })
