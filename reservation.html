@@ -57,17 +57,23 @@
                     
                     $(".resSubmit").on("click", function (){
                         event.preventDefault();
-                        var newReservation = {
+                        var reservations = {
                             first_name: $(".first-name").val().trim(),
                             last_name:  $(".last-name").val().trim(), 
                             phone:  $(".phone-number").val().trim(), 
                             email:  $(".email").val().trim(), 
                         };
-                        $.post("/api/reservations",newReservation)
+                        $(".first-name").val("");
+                        $(".last-name").val("");
+                        $(".phone-number").val("");
+                        $(".email").val("");
+
+
+                        $.post("/api/reservations/",reservations)
                         .then(function (data){
                             console.log("i'm working?")
                         })
-                        console.log(newReservation);
+                        console.log(reservations);
                        
                     })
 
