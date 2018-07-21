@@ -63,7 +63,7 @@
                             phone:  $(".phone-number").val().trim(), 
                             email:  $(".email").val().trim(), 
                         };
-                        $.post("/api/reservations",newReservation)
+                        $.post("/api/reservation",newReservation)
                         .then(function (data){
                             console.log("i'm working?")
                         })
