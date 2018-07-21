@@ -20,7 +20,8 @@ var reservations = [
 		first_name: "",
 		last_name: "",
 		phone: "",
-		email: ""
+		email: "",
+
 	}
 ];
 
@@ -33,17 +34,16 @@ var waitlist = [
 
 var tables = [];
 
-app.get("/reservations", function(req, res) {
+app.get("/api/reservationsJSON", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < reservations.length; i++){
 		console.log("hello")
 		return res.json(reservations[i]);
 	}
-	
 });
 
-app.get("/waitlist", function(req, res) {
+app.get("/api/waitlistJSON", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < waitlist.length; i++){
@@ -51,6 +51,18 @@ app.get("/waitlist", function(req, res) {
 		return res.json(waitlist[i]);
 	}
 	
+});
+
+app.get("/reservations", function(req, res) {
+	res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+app.get("/", function(req, res) {
+	res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/tables", function(req, res) {
+	res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 
