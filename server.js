@@ -30,11 +30,16 @@ var waitlist = [
 		first_name: "",
 		last_name: ""
 	}
-]
+];
 
-var tables = [];
+var tables = [
+	{
+		reservation: "",
+		waiting: ""
+	}
+];
 
-app.get("/api/reservationsJSON", function(req, res) {
+app.get("/api/reservations", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < reservations.length; i++){
@@ -43,7 +48,7 @@ app.get("/api/reservationsJSON", function(req, res) {
 	}
 });
 
-app.get("/api/waitlistJSON", function(req, res) {
+app.get("/api/waitlist", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < waitlist.length; i++){
@@ -65,6 +70,21 @@ app.get("/tables", function(req, res) {
 	res.sendFile(path.join(__dirname, "tables.html"));
 });
 
+app.post("/api/reservations", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newReservation = req.body;
+	console.log(newReservation);
+  // Using a RegEx Pattern to remove spaces from newReservation
+  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newReservation);
+
+  reservations.push(newReservation);
+
+  res.json(newReservation);
+});
 
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
