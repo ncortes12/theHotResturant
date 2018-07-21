@@ -40,20 +40,13 @@ var tables = [
 ];
 
 app.get("/api/reservation", function(req, res) {
-	
-	console.log(req.params);
-		
+	console.log(req.params);	
 		return res.json(reservations);
-	
 });
 
 app.get("/api/waitlist", function(req, res) {
-	
 	console.log(req.params);
-	for (var i = 0; i < waitlist.length; i++){
 		return res.json(waitlist);
-	}
-	
 });
 
 app.get("/reservation.html", function(req, res) {
@@ -79,7 +72,12 @@ app.post("/api/reservation", function(req, res) {
 
   console.log(newReservation);
 
-  reservations.push(newReservation);
+	if(reservations <= 5){
+		reservations.push(newReservation);
+	}
+	else{
+		waitlist.push(newReservation);
+	}
 
   res.json(newReservation);
 });
