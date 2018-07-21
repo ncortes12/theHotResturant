@@ -60,7 +60,7 @@ app.post("/api/reservation", function(req, res) {
 
   console.log(newReservation);
 
-	if(reservations <= 5){
+	if(reservations.length <= 5){
 		reservations.push(newReservation);
 	}
 	else{
