@@ -32,6 +32,9 @@
                     <div class="card-header">
                         Current Reservations
                     </div>
+                    <div class = "reservationList">
+
+                    </div>
             </form>
         
             <form>
@@ -40,13 +43,22 @@
                         Waiting List 
                     </div>
             </form>
-   
+   <script>
+       $.get("/api/reservation/", function (data){
+           console.log(data);
+           
+           for (var i = 0; i< data.length; i++){
+               var resDisplay = "Name: " + data[0].first_name + "\n" + "Last Name: " + data[0].last_name + "\n" + "Phone Number: " +  data[0].phone + " \n" + "Email: " +  data[0].email
+               $(".reservationList").append(resDisplay);
+           }
+       })
+   </script>
     
 </div>
 </div>
 <div class = "row">
         <a href="/api/reservation/">API Table Link |</a>
-        <a id="link" href="????">API Wait List</a>
+        <a id="link" href="/api/waitlist/">API Wait List</a>
     </div>
 </body>
 
