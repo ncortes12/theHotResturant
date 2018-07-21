@@ -51,8 +51,7 @@ app.get("/api/waitlist", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < waitlist.length; i++){
-		console.log("Govana")
-		return res.json(waitlist[i]);
+		return res.json(waitlist);
 	}
 	
 });
