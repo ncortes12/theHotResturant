@@ -15,22 +15,9 @@ app.use(bodyParser.json());
 
 //Variables
 //==============================================================
-var reservations = [
-	{
-		first_name: "",
-		last_name: "",
-		phone: "",
-		email: "",
+var reservations = [];
 
-	}
-];
-
-var waitlist = [
-	{
-		first_name: "",
-		last_name: ""
-	}
-];
+var waitlist = [];
 
 var tables = [
 	{
@@ -55,7 +42,7 @@ app.get("/reservation", function(req, res) {
 
 app.get("/", function(req, res) {
 	res.sendFile(path.join(__dirname, "index.html"));
-	
+
 });
 
 app.get("/tables", function(req, res) {
