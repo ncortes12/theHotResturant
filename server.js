@@ -34,7 +34,7 @@ var waitlist = [
 
 var tables = [];
 
-app.get("/api/reservationsJSON", function(req, res) {
+app.get("/api/reservations", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < reservations.length; i++){
@@ -43,7 +43,7 @@ app.get("/api/reservationsJSON", function(req, res) {
 	}
 });
 
-app.get("/api/waitlistJSON", function(req, res) {
+app.get("/api/waitlist", function(req, res) {
 	
 	console.log(req.params);
 	for (var i = 0; i < waitlist.length; i++){
